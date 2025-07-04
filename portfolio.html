@@ -17,8 +17,8 @@
       }
 
       :root {
-        --primary: black;
-        --secondary: #0a0a2a;
+        --primary: #0a0a2a;
+        --secondary: #1a1a4a;
         --accent: #00ffff;
         --text: #ffffff;
         --light-gray: #aaaaaa;
@@ -29,14 +29,11 @@
         scroll-behavior: smooth;
       }
 
-     
-
       body {
-        background: #000;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         color: var(--text);
         line-height: 1.6;
         overflow-x: hidden;
-        padding-bottom: 100px;
       }
 
       /* Navigation */
@@ -215,15 +212,11 @@
         color: var(--accent);
       }
 
-      .home-image img {
-        width: 300px;
-        height: auto;
-        border-radius: 20px;
-        transition: transform 0.4s ease;
-      }
-
-      .home-image img:hover {
-        transform: scale(1.05);
+      .home-image {
+        flex: 1;
+        min-width: 300px;
+        display: flex;
+        justify-content: center;
       }
 
       .profile-img {
@@ -547,110 +540,80 @@
         color: var(--accent);
       }
 
-
-       /* Achievements Section */
-      #achievements {
-        background: rgba(0, 0, 0, 0.1);
-      }
-
-      .achievements-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
-        margin-bottom: 2rem;
-      }
-
-      .achievement-card {
-        background: rgba(255,255,255,0.05);
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0,255,255,0.08);
-        padding: 2rem 1.5rem;
-        transition: transform 0.3s ease;
-        display: flex;
-        align-items: stretch;
-      }
-
-      .achievement-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,255,255,0.15);
-      }
-
-      .achievement-content h3 {
-        color: var(--accent);
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
-      }
-
-      .achievement-content p {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-        color: var(--text);
-      }
-
-      .achievement-content .btn {
-        margin-top: auto;
-      }
-
-      /* Education Details */
-      .education-details {
+      .contact-form {
+        flex: 1;
+        min-width: 300px;
         background: rgba(255, 255, 255, 0.05);
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-top: 2rem;
-        border-left: 3px solid var(--accent);
+        padding: 2rem;
+        border-radius: 15px;
       }
 
-      .education-details h4 {
+      .contact-form h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
         color: var(--accent);
-        margin-bottom: 1rem;
-        font-size: 1.3rem;
       }
 
-      .education-item {
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      .form-group {
+        margin-bottom: 1.5rem;
       }
 
-      .education-item:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-        padding-bottom: 0;
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
       }
 
-      .education-item p {
-        margin: 0.3rem 0;
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        background: rgba(255, 255, 255, 0.07);
+        border: none;
+        border-radius: 5px;
+        color: var(--text);
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
       }
 
-      /* Fixed Footer */
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--accent);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      
+
+      /* Footer */
       footer {
         background: rgba(0, 0, 0, 0.2);
-        padding: 1.5rem 5%;
+        padding: 2rem 5%;
         text-align: center;
-
-        bottom: 0;
-        width: 100%;
-        z-index: 100;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
       }
 
       .social-links {
         display: flex;
         justify-content: center;
-        gap: 1.4rem;
-        margin-bottom: 1rem;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
       }
 
       .social-links a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         color: var(--text);
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         transition: all 0.3s ease;
         text-decoration: none;
       }
@@ -658,16 +621,15 @@
       .social-links a:hover {
         background: var(--accent);
         color: var(--primary);
-        transform: translateY(-3px);
+        transform: translateY(-5px);
       }
 
       .copyright {
         color: var(--light-gray);
-        font-size: 0.9rem;
+        font-size: 1.1rem;
       }
 
-      /* Sticky photo */
-
+      /*add new style*/
       .sticky-photo {
         opacity: 0;
         transform: scale(0.8);
@@ -724,10 +686,6 @@
         .home-content h2 {
           font-size: 1.8rem;
         }
-
-        .btn-container {
-          gap: 1rem;
-        }
       }
 
       @media (max-width: 768px) {
@@ -746,10 +704,6 @@
         .btn {
           padding: 0.7rem 1.5rem;
           font-size: 1rem;
-        }
-
-        footer {
-          padding: 1rem 5%;
         }
       }
     </style>
@@ -788,7 +742,10 @@
           while delivering exceptional performance.
         </p>
         <div class="btn-container">
-          <a href="#" target="_blank" class="btn btn-primary"
+          <a
+            href="https://drive.google.com/file/d/1Zw4LMytJiEyutYElvd2VXGECkkyYNADr/view?usp=drive_link"
+            target="_blank"
+            class="btn btn-primary"
             >Download Resume</a
           >
           <a href="https://github.com/kumarBijesh" target="_blank" class="btn"
@@ -815,17 +772,17 @@
       <h2 class="section-title">About Me</h2>
       <div class="about-content">
         <div class="about-text">
-          <h3>Cyber Security & Web developer</h3>
+          <h3>Cyber Security & Cloud Specialist</h3>
           <p>
-            I'm a cybersecurity enthusiast and developer currently pursuing my
+            I’m a cybersecurity enthusiast and developer currently pursuing my
             Master of Computer Applications at Lovely Professional University,
-            where I've maintained a 7.6 CGPA. My journey in technology began in
+            where I’ve maintained a 7.6 CGPA. My journey in technology began in
             2023, driven by a keen interest in securing systems and
             understanding how technology shapes the world
           </p>
           <p>
-            Over time, I've built expertise across cybersecurity, cloud
-            computing, data analysis, and web development. I've worked on a
+            Over time, I’ve built expertise across cybersecurity, cloud
+            computing, data analysis, and web development. I’ve worked on a
             variety of projects — from building data layers and scalable web
             platforms to exploring the intersection of AI and security. I love
             staying up to date with emerging technologies and continuously seek
@@ -838,15 +795,13 @@
               <h4>Technical Skills</h4>
               <ul>
                 <li>
-                  <i class="fas fa-check"></i> Cyber Security & Ethical Hacking
+                  <i class="fas fa-check"></i> SOC, Threat Analyst
                 </li>
                 <li>
-                  <i class="fas fa-check"></i> Web Application Development
+                  <i class="fas fa-check"></i> HTML, CSS, JavaScript
                 </li>
 
                 <li><i class="fas fa-check"></i> Python, Java</li>
-
-                <li><i class ="fas fa-check"></i>Software Testing </li>
               </ul>
             </div>
             <div class="skill-item">
@@ -855,6 +810,7 @@
                 <li><i class="fas fa-check"></i> Problem Solving</li>
                 <li><i class="fas fa-check"></i> Team Leadership</li>
                 <li><i class="fas fa-check"></i> Communication</li>
+                <li><i class="fas fa-check"></i> Good listener</li>
               </ul>
             </div>
           </div>
@@ -867,7 +823,7 @@
           </div>
           <div class="stat-box">
             <i class="fas fa-project-diagram"></i>
-            <h3>10+</h3>
+            <h3>5+</h3>
             <p>Projects Completed</p>
           </div>
 
@@ -895,13 +851,12 @@
               Threat X-Ray helps spot hidden threats and privacy risks early on,
               making it easier to check files, links, and images without going
               through tons of manual work. It cuts down the number of files you
-              have to review and makes security checks faster and simpler.
+              have to review and makes security checks faster and simpler..
             </p>
             <div class="tech-stack">
               <span class="tech-item">Security</span>
               <span class="tech-item">Python</span>
               <span class="tech-item">SQL</span>
-              <span class="tech-item">API</span>
             </div>
             <a
               href="https://github.com/kumarBijesh/ThreatXrayApp"
@@ -923,7 +878,10 @@
               This tool is a forensic utility designed to help recover lost or
               deleted files. It not only restores your data but also gives you a
               clear view of your file system — showing the total number of
-              files, their sizes, and file types.
+              files, their sizes, and file types. Additionally, it helps you
+              easily identify which files were most recently accessed or
+              modified, making your investigations or data audits simpler and
+              more effective.
             </p>
             <div class="tech-stack">
               <span class="tech-item">Python </span>
@@ -948,8 +906,9 @@
             <p>
               This is a keylogger tool that records all keystrokes typed on a
               computer. It comes with a simple graphical user interface (GUI),
-              making it easy to use. I'm currently working on an advanced
-              version that can start automatically.
+              making it easy to use. I’m currently working on an advanced
+              version that can start automatically and securely send captured
+              keystrokes to a designated email address.
             </p>
             <div class="tech-stack">
               <span class="tech-item">Python</span>
@@ -976,7 +935,11 @@
               This project is a Fake News Detection system that can predict
               whether a piece of news is true or fake. I built and trained a
               machine learning model that analyzes news content and tells us how
-              likely it is to be real or misleading.
+              likely it is to be real or misleading. The model provides an
+              accuracy score, helping us understand how well it distinguishes
+              between genuine and false news. In the future, I plan to integrate
+              more advanced AI techniques to improve detection accuracy and make
+              the tool even smarter.
             </p>
             <div class="tech-stack">
               <span class="tech-item">Python</span>
@@ -1005,30 +968,44 @@
             />
           </div>
           <div class="certificate-content">
-            <h3>Google cybersecurity</h3>
+            <h3>Google cybersecurity Professional</h3>
             <span class="certificate-issuer">Coursera</span>
             <p>
-              Completed Google's Cybersecurity Certificates, where I learned how
+              Completed Google’s Cybersecurity Certificates, where I learned how
               to spot threats, reduce risks, and follow best practices to keep
-              data secure.
+              data secure. It gave me a solid understanding of security
+              operations and how organizations protect their systems.
             </p>
-            <a href="https://drive.google.com/file/d/1b0jW0VERAMHHT6TuwVFdsrkmwTRKVGiT/view?usp=drive_link" target="_blank" class="btn">View Certificate</a>
+            <a
+              href="https://drive.google.com/file/d/1b0jW0VERAMHHT6TuwVFdsrkmwTRKVGiT/view?usp=sharing"
+              target="_blank"
+              class="btn"
+              >View Certificate</a
+            >
           </div>
         </div>
 
         <div class="certificate-card">
           <div class="certificate-img">
             <i class="fas fa-user-secret"></i>
+            <img src="" alt="" />
           </div>
           <div class="certificate-content">
             <h3>Cyber security 101</h3>
             <span class="certificate-issuer">Try Hack Me</span>
             <p>
-              Took TryHackMe's Cyber Security 101 course, which let me explore
-              real-world security scenarios. I practiced finding vulnerabilities
-              and learned about encryption.
+              Took TryHackMe’s Cyber Security 101 course, which let me explore
+              real-world security scenarios. I practiced finding
+              vulnerabilities, learned about encryption, and started thinking
+              like both an attacker and a defender. It was a great way to build
+              practical skills.
             </p>
-            <a href="https://drive.google.com/file/d/1VPs2-f_q439GhNBOdM3NPT7X0lqAWD7T/view?usp=drive_link" target="_blank" class="btn">View Certificate</a>
+            <a
+              href="https://drive.google.com/file/d/1VPs2-f_q439GhNBOdM3NPT7X0lqAWD7T/view?usp=sharing"
+              target="_blank"
+              class="btn"
+              >View Certificate</a
+            >
           </div>
         </div>
 
@@ -1042,9 +1019,18 @@
             <p>
               I completed the Pre Security path on TryHackMe, which was a great
               hands-on way to learn the basics of cybersecurity. It helped me
-              understand how networks work.
+              understand how networks work, get comfortable with Linux and
+              Windows, and pick up essential security concepts. The interactive
+              labs made it easy to explore these topics step by step and gave me
+              a solid foundation to dive deeper into ethical hacking and more
+              advanced security skills.
             </p>
-            <a href="https://drive.google.com/file/d/1QRh61DPJOlBLD-nvAqtcSHkKYG0VNFxp/view?usp=drive_link" target="_blank" class="btn">View Certificate</a>
+            <a
+              href="https://drive.google.com/file/d/1QRh61DPJOlBLD-nvAqtcSHkKYG0VNFxp/view?usp=drive_link"
+              target="_blank"
+              class="btn"
+              >View Certificate</a
+            >
           </div>
         </div>
 
@@ -1059,28 +1045,13 @@
             <h3>IBM Full Stack Software Developer</h3>
             <span class="certificate-issuer">Corsera</span>
             <p>
-              Completed IBM's Full Stack Software Developer program, where I
+              Completed IBM’s Full Stack Software Developer program, where I
               learned how to build web applications from end to end. I worked
-              with front-end and back-end technologies.
+              with front-end and back-end technologies, explored databases,
+              APIs, and even touched on cloud deployment. It gave me a strong
+              foundation to create complete, scalable applications.
             </p>
             <a href="#" target="_blank" class="btn">View Certificate</a>
-          </div>
-        </div>
-      </div>
-    </section>
- <!-- Achievements Section -->
-    <section id="achievements">
-      <h2 class="section-title">Achievements</h2>
-        
-        <div class="achievement-card">
-          <div class="achievement-content ">
-            <h3>Publication in Cybersecurity Journal</h3>
-            <p>
-              Published a research paper on advanced penetration testing techniques in a reputed cybersecurity journal, contributing to the academic community and sharing knowledge with peers.
-            </p>
-            <a href="https://ijsrem.com/download/threatxray-a-dual-layered-approach-for-advanced-steganographic-and-metadata-based-threat-detection/" target="_blank" rel="noopener" class="btn btn-primary">
-              Check Out Achievement
-            </a>
           </div>
         </div>
       </div>
@@ -1088,10 +1059,10 @@
 
     <!-- Contact Section -->
     <section id="contact">
-      <h2 class="section-title">Contact & Education</h2>
+      <h2 class="section-title">Contact Me</h2>
       <div class="contact-container">
         <div class="contact-info">
-          <h3>Get In Touch</h3>
+          <h3>Let's Connect</h3>
           <p>
             I'm currently available for freelance work and full-time positions.
             Feel free to reach out via email or phone for collaboration, project
@@ -1123,45 +1094,20 @@
               </div>
             </div>
           </div>
-
-          <!-- Education Details -->
-          <div class="education-details">
-            <h4>Education Details</h4>
-            <div class="education-item">
-              <p><strong>Name:</strong> Bijesh Kumar</p>
-              <p><strong>Age:</strong> 24Years</p>
-            </div>
-            <div class="education-item">
-              <p><strong>College:</strong> Lovely Professional University</p>
-              <p>
-                <strong>Degree:</strong> Master of Computer Applications (MCA)
-              </p>
-              <p><strong>CGPA:</strong> 7.6</p>
-              <p><strong>Graduation:</strong> 2023 - 2025</p>
-              <p>
-                <strong>College Address: </strong>Lovely Professional
-                University, Jalandhar - Delhi G.T. Road, Phagwara, Punjab
-                (India) - 144411
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Fixed Footer -->
+       
+
+    <!-- Footer -->
     <footer>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/bijesh-kumar/" target="_blank"
           ><i class="fab fa-linkedin-in"></i
-        ></a>
+        ></a>1 w
         <a href="https://github.com/kumarBijesh" target="_blank"
           ><i class="fab fa-github"></i
         ></a>
-        <a href="mailto:b.k.lpuinsta@gmail.com"
-          ><i class="fas fa-envelope"></i
-        ></a>
-        <a href="tel:+918789774242"><i class="fas fa-phone"></i></a>
+        
       </div>
       <p class="copyright">© 2024 Bijesh Kumar. All Rights Reserved.</p>
     </footer>
@@ -1216,39 +1162,8 @@
           stickyPhoto.classList.remove("visible");
         }
       });
-    </script>
-
-    <!-- add this for snow effect -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-    <script>
-      tsParticles.load("tsparticles", {
-        fullScreen: { enable: true, zIndex: -1 },
-        background: { color: "#000" },
-        particles: {
-          number: { value: 80, density: { enable: true, area: 800 } },
-          color: { value: "#00ffff" } /* cyan glow */,
-          shape: { type: "circle" },
-          opacity: { value: 0.3, random: true },
-          size: { value: 2, random: true },
-          move: {
-            enable: true,
-            speed: 1,
-            direction: "bottom",
-            straight: false,
-          },
-        },
-        interactivity: {
-          events: {
-            onhover: { enable: true, mode: "repulse" },
-            onclick: { enable: true, mode: "push" },
-          },
-          modes: { repulse: { distance: 100 }, push: { quantity: 4 } },
-        },
-        detectRetina: true,
-      });
-    </script>
-    <div id="tsparticles"></div>
-
-    
+      
+      
+        </script>
   </body>
 </html>
