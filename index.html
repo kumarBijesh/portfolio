@@ -27,15 +27,12 @@
       scroll-behavior: smooth;
     }
 
-
-
     body {
       background: #000;
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
       padding-bottom: 100px;
-    
     }
 
     /* Navigation */
@@ -169,6 +166,7 @@
       font-size: 2rem;
       margin-bottom: 1.5rem;
       color: var(--light-gray);
+      min-height: 3.5rem;
     }
 
     .home-content p {
@@ -248,6 +246,22 @@
       }
     }
 
+    /* Typewriter cursor */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      background-color: var(--accent);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     /* About Section */
     #about {
       background: rgba(0, 0, 0, 0.1);
@@ -289,6 +303,14 @@
       padding: 1.5rem;
       border-radius: 10px;
       border-left: 3px solid var(--accent);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .skill-item.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .skill-item h4 {
@@ -306,6 +328,14 @@
       font-size: 1.1rem;
       display: flex;
       align-items: center;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease;
+    }
+
+    .skill-item li.visible {
+      opacity: 1;
+      transform: translateX(0);
     }
 
     .skill-item li i {
@@ -328,6 +358,14 @@
       border-radius: 10px;
       text-align: center;
       transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .stat-box.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .stat-box:hover {
@@ -367,6 +405,14 @@
       overflow: hidden;
       transition: transform 0.3s ease;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .project-card:hover {
@@ -439,6 +485,14 @@
       overflow: hidden;
       transition: transform 0.3s ease;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .certificate-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .certificate-card:hover {
@@ -567,6 +621,14 @@
       transition: transform 0.3s ease;
       display: flex;
       align-items: stretch;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .achievement-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .achievement-card:hover {
@@ -777,7 +839,7 @@
   <section id="home">
     <div class="home-content">
       <h1>Hi, I'm <span>Bijesh Kumar</span></h1>
-      <h2>Cyber Security And Data Analyst</h2>
+      <h2 id="typewriter-title"></h2>
       <p>
         I specialize in developing secure and scalable solutions for modern
         applications. With expertise in cybersecurity, cloud infrastructure,
@@ -825,24 +887,24 @@
           <div class="skill-item">
             <h4>Technical Skills</h4>
             <ul>
-              <li>
+              <li class="skill-list-item">
                 <i class="fas fa-check"></i> Cyber Security & Ethical Hacking
               </li>
-              <li>
+              <li class="skill-list-item">
                 <i class="fas fa-check"></i> Web Application Development
               </li>
 
-              <li><i class="fas fa-check"></i> Python, Java</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Python, Java</li>
 
-              <li><i class="fas fa-check"></i>Software Testing </li>
+              <li class="skill-list-item"><i class="fas fa-check"></i>Software Testing </li>
             </ul>
           </div>
           <div class="skill-item">
             <h4>Professional Skills</h4>
             <ul>
-              <li><i class="fas fa-check"></i> Problem Solving</li>
-              <li><i class="fas fa-check"></i> Team Leadership</li>
-              <li><i class="fas fa-check"></i> Communication</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Problem Solving</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Team Leadership</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Communication</li>
               
             </ul>
           </div>
@@ -850,20 +912,20 @@
           <div class="skill-item">
             <h4>Tools</h4>
             <ul>
-              <li><i class="fas fa-check"></i> Nmap</li>
-              <li><i class="fas fa-check"></i> wireshark</li>
-              <li><i class="fas fa-check"></i> Selenium</li>
-              <li><i class="fas fa-check"></i> Jupyter NoteBook</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Nmap</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> wireshark</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Selenium</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> Jupyter NoteBook</li>
               </ul>
           </div>
 
           <div class="skill-item">
             <h4>Practice Platform</h4>
             <ul>
-              <li><i class="fas fa-check"></i> TryHcakMe</li>
-              <li><i class="fas fa-check"></i> picoCTF</li>
-              <li><i class="fas fa-check"></i> LeetCode</li>
-              <li><i class="fas fa-check"></i>Kaggle</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> TryHcakMe</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> picoCTF</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i> LeetCode</li>
+              <li class="skill-list-item"><i class="fas fa-check"></i>Kaggle</li>
               </ul>
           </div>
         </div>
@@ -1246,6 +1308,96 @@
         stickyPhoto.classList.remove("visible");
       }
     });
+
+    // Continuous typewriter effect for title
+    const typewriterTitle = document.getElementById('typewriter-title');
+    const titles = [
+      "Cyber Security Specialist",
+      "Data Analyst",
+      "Web Developer",
+      "Python Developer",
+      "Security Researcher"
+    ];
+    let titleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let pauseTime = 2000;
+
+    function typeTitle() {
+      const currentTitle = titles[titleIndex];
+      
+      if (!isDeleting) {
+        // Typing
+        typewriterTitle.textContent = currentTitle.substring(0, charIndex + 1);
+        charIndex++;
+        
+        if (charIndex === currentTitle.length) {
+          isDeleting = true;
+          typingSpeed = 50;
+          setTimeout(typeTitle, pauseTime);
+          return;
+        }
+      } else {
+        // Deleting
+        typewriterTitle.textContent = currentTitle.substring(0, charIndex - 1);
+        charIndex--;
+        
+        if (charIndex === 0) {
+          isDeleting = false;
+          titleIndex = (titleIndex + 1) % titles.length;
+          typingSpeed = 100;
+        }
+      }
+      
+      setTimeout(typeTitle, typingSpeed);
+    }
+
+    // Start the typewriter effect
+    setTimeout(typeTitle, 1000);
+
+    // Scroll reveal animations
+    const revealElements = () => {
+      // For skills and stats
+      const skills = document.querySelectorAll('.skill-item, .stat-box');
+      skills.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      });
+
+      // For skill list items (appear only once)
+      const skillItems = document.querySelectorAll('.skill-list-item');
+      skillItems.forEach((item, index) => {
+        const elementTop = item.getBoundingClientRect().top;
+        
+        if (elementTop < window.innerHeight - 100) {
+          setTimeout(() => {
+            item.classList.add('visible');
+          }, 150 * index);
+        }
+      });
+
+      // For projects and certificates
+      const cards = document.querySelectorAll('.project-card, .certificate-card, .achievement-card');
+      cards.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      });
+    };
+
+    // Initial reveal check
+    revealElements();
+    
+    // Check on scroll
+    window.addEventListener('scroll', revealElements);
   </script>
 
   <!-- add this for snow effect -->
