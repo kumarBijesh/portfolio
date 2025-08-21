@@ -665,6 +665,72 @@
       margin-top: auto;
     }
 
+    /* Internships Section */
+    #internships {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .internships-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .internship-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.08);
+      padding: 2rem 1.5rem;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+
+    .internship-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .internship-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.15);
+    }
+
+    .internship-content h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .internship-content .internship-company {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--light-gray);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .internship-content .internship-date {
+      display: block;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .internship-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .internship-content .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
     /* Education Details */
     .education-details {
       background: var(--card-bg);
@@ -856,6 +922,7 @@
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#internships">Internships</a></li>
       <li><a href="#certificates">Certificates</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -900,12 +967,11 @@
           I'm a cybersecurity enthusiast and developer currently pursuing my
           Master of Computer Applications at Lovely Professional University,
           where I've maintained a 7.6 CGPA. My journey in technology began in
-          2023, driven by a keen interest in securing systems and
+         2023, driven by a keen interest in securing systems and
           understanding how technology shapes the world
         </p>
         <p>
-          Over time, I've built expertise across cybersecurity, cloud
-          computing, data analysis, and web development. I've worked on a
+          Over time, I've built expertise across cybersecurity, web development. I've worked on a
           variety of projects — from building data layers and scalable web
           platforms to exploring the intersection of AI and security. I love
           staying up to date with emerging technologies and continuously seek
@@ -1075,6 +1141,24 @@
       </div>
     </div>
   </section>
+
+  <!-- Internships Section -->
+  <section id="internships">
+    <h2 class="section-title">My Internships</h2>
+    <div class="internships-container">
+      <div class="internship-card">
+        <div class="internship-content">
+          <h3>Cybersecurity Intern</h3>
+          <span class="internship-company">Elevate Labs</span>
+          <span class="internship-date">23 June 2025 - 28 July 2025</span>
+          <p>
+            During my internship at Elevate Labs, I worked on various cybersecurity tasks including vulnerability assessment, penetration testing, and security analysis. I gained hands-on experience with tools like Nmap, Wireshark, and Metasploit.
+          </p>
+          <a href="https://drive.google.com/file/d/15OZ1GUxBlEy0anY1aWxbF6FV-M2RE0JS/view?usp=sharing" target="_blank" class="btn">View Certificate</a>
+        </div>
+      </div>
+
+      </section>
 
  <!-- Certificates Section -->
 <section id="certificates">
@@ -1391,7 +1475,7 @@
     // Scroll reveal animations
     const revealElements = () => {
       // For skills and stats
-      const skills = document.querySelectorAll('.skill-item, .stat-box');
+      const skills = document.querySelectorAll('.skill-item, .stat-box, .internship-card');
       skills.forEach(el => {
         const elementTop = el.getBoundingClientRect().top;
         const elementVisible = 150;
