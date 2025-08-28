@@ -5,972 +5,169 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bijesh Kumar - Portfolio</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#000000',
+            secondary: '#1a1a1a',
+            accent: '#00ffff',
+            text: '#ffffff',
+            'light-gray': '#aaaaaa',
+            'dark-gray': '#333333',
+            'card-bg': 'rgba(26, 26, 26, 0.7)',
+          },
+          fontFamily: {
+            sans: ['"Segoe UI"', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif'],
+          },
+          animation: {
+            'blink': 'blink 1s infinite',
+          },
+          keyframes: {
+            blink: {
+              '0%, 100%': { opacity: 1 },
+              '50%': { opacity: 0 },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    :root {
-      --primary: black;
-      --secondary: #1a1a1a;
-      --accent: #00ffff;
-      --text: #ffffff;
-      --light-gray: #aaaaaa;
-      --dark-gray: #333333;
-      --card-bg: rgba(26, 26, 26, 0.7);
-    }
-
     html {
       scroll-behavior: smooth;
     }
 
     body {
       background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
-      color: var(--text);
-      line-height: 1.6;
       overflow-x: hidden;
-      padding-bottom: 100px;
     }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--secondary);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.2rem 5%;
-      z-index: 1000;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo span {
-      color: #fff;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav-links li {
-      margin: 0 1rem;
-    }
-
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-links a.active {
-      color: var(--accent);
-    }
-
-    .nav-links a.active::after {
-      width: 100%;
-    }
-
-    .mobile-menu-btn {
-      display: none;
-      cursor: pointer;
-      font-size: 1.8rem;
-      color: var(--accent);
-    }
-
-    /* Sections */
-    section {
-      min-height: 100vh;
-      padding: 6rem 5% 4rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-      font-size: 2.5rem;
-      position: relative;
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    }
-
-    .section-title::after {
-      content: "";
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
-
-    /* Home Section - Updated Layout */
-    #home {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 5rem;
-      position: relative;
-      padding-top: 8rem;
-    }
-
-    .home-content {
-      max-width: 600px;
-      text-align: left;
-    }
-
-    .home-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .home-content h1 span {
-      color: var(--accent);
-      text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    }
-
-    .home-content h2 {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: var(--light-gray);
-      min-height: 3.5rem;
-    }
-
-    .home-content p {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-      max-width: 600px;
-    }
-
-    .quote {
-      font-style: italic;
-      color: #ccc;
-      border-left: 3px solid var(--accent);
-      padding-left: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .profile-image {
-      flex-shrink: 0;
-    }
-
-    .profile-image img {
-      width: 400px;
-      height: 450px;
-      
-     
-      background-color: black;
-      object-fit: cover;
-      box-shadow: 0 0 30px rgba(5, 8, 8, 0.5);
-      transition: all 0.4s ease;
-    }
-
-    .profile-image img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(122, 243, 243, 0.7);
-    }
-
-    .btn-container {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      padding: 0.8rem 2rem;
-      background: transparent;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: var(--accent);
-      color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--primary);
-    }
-
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    /* Typewriter cursor */
     .typewriter-cursor {
       display: inline-block;
       width: 3px;
-      background-color: var(--accent);
+      background-color: #00ffff;
       margin-left: 2px;
       animation: blink 1s infinite;
       height: 1.2em;
       vertical-align: middle;
     }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    /* About Section */
-    #about {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .about-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 3rem;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .about-text h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-    }
-
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .skill-item {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 10px;
-      border-left: 3px solid var(--accent);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .skill-item.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .skill-item h4 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      color: var(--accent);
-    }
-
-    .skill-item ul {
-      list-style: none;
-    }
-
-    .skill-item li {
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
+    .skill-list-item {
       opacity: 0;
       transform: translateX(-20px);
       transition: all 0.4s ease;
     }
 
-    .skill-item li.visible {
+    .skill-list-item.visible {
       opacity: 1;
       transform: translateX(0);
     }
 
-    .skill-item li i {
-      color: var(--accent);
-      margin-right: 10px;
-      font-size: 0.8rem;
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
 
-    .about-stats {
-      flex: 1;
-      min-width: 300px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1.5rem;
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
     }
 
-    .stat-box {
-      background: var(--card-bg);
-      padding: 2rem 1rem;
-      border-radius: 10px;
-      text-align: center;
-      transition: transform 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    ::-webkit-scrollbar-thumb {
+      background: #00ffff;
+      border-radius: 4px;
     }
 
-    .stat-box.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .stat-box:hover {
-      transform: translateY(-10px);
-      background: rgba(0, 255, 255, 0.1);
-    }
-
-    .stat-box i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .stat-box h3 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-box p {
-      color: var(--light-gray);
-    }
-
-    /* Projects Section */
-    #projects {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .projects-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .project-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    .project-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
-    }
-
-    .project-img {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(45deg, #2a0a4a, #0a2a4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: var(--accent);
-    }
-
-    .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-      color: var(--accent);
-    }
-
-    .project-content .project-date {
-      display: block;
-      margin-bottom: 1rem;
-      color: var(--light-gray);
-      font-size: 0.9rem;
-    }
-
-    .project-content p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-    }
-
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .tech-item {
-      background: rgba(0, 255, 255, 0.1);
-      color: var(--accent);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
-    /* Certificates Section */
-    #certificates {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .certificates-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .certificate-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    .certificate-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .certificate-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
-    }
-
-    .certificate-img {
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(45deg, #0a4a2a, #0a2a4a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: var(--accent);
-    }
-
-    .certificate-content {
-      padding: 1.5rem;
-    }
-
-    .certificate-content h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-      color: var(--accent);
-    }
-
-    .certificate-content .certificate-issuer {
-      display: block;
-      margin-bottom: 1rem;
-      color: var(--light-gray);
-      font-size: 1rem;
-    }
-
-    .certificate-content p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-    }
-
-    /* Contact Section */
-    #contact {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .contact-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-    }
-
-    .contact-info {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .contact-info h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: var(--accent);
-    }
-
-    .contact-info p {
-      margin-bottom: 2rem;
-      font-size: 1.1rem;
-      max-width: 500px;
-    }
-
-    .contact-details {
-      margin-top: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-item i {
-      font-size: 1.5rem;
-      color: var(--accent);
-      margin-right: 1rem;
-      width: 50px;
-      height: 50px;
-      background: rgba(0, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .contact-text h4 {
-      font-size: 1.2rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .contact-text p,
-    .contact-text a {
-      color: var(--light-gray);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .contact-text a:hover {
-      color: var(--accent);
-    }
-
-
-    /* Achievements Section */
-    #achievements {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .achievements-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .achievement-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.08);
-      padding: 2rem 1.5rem;
-      transition: transform 0.3s ease;
-      display: flex;
-      align-items: stretch;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    .achievement-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .achievement-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.15);
-    }
-
-    .achievement-content h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .achievement-content p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    .achievement-content .btn {
-      margin-top: auto;
-    }
-
-    /* Internships Section */
-    #internships {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .internships-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2.5rem;
-    }
-
-    .internship-card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      box-shadow: 0 10px 20px rgba(0, 255, 255, 0.08);
-      padding: 2rem 1.5rem;
-      transition: transform 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    .internship-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .internship-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.15);
-    }
-
-    .internship-content h3 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .internship-content .internship-company {
-      display: block;
-      margin-bottom: 1rem;
-      color: var(--light-gray);
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .internship-content .internship-date {
-      display: block;
-      margin-bottom: 1rem;
-      color: var(--accent);
-      font-size: 1rem;
-    }
-
-    .internship-content p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    .internship-content .btn {
-      margin-top: auto;
-      align-self: flex-start;
-    }
-
-    /* Education Details */
-    .education-details {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-top: 2rem;
-      border-left: 3px solid var(--accent);
-    }
-
-    .education-details h4 {
-      color: var(--accent);
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .education-item {
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .education-item:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .education-item p {
-      margin: 0.3rem 0;
-    }
-
-    /* Fixed Footer */
-    footer {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 1.5rem 5%;
-      text-align: center;
-      bottom: 0;
-      width: 100%;
-      z-index: 100;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-      border-top: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .social-links a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: var(--text);
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .social-links a:hover {
-      background: var(--accent);
-      color: var(--primary);
-      transform: translateY(-3px);
-    }
-
-    .copyright {
-      color: var(--light-gray);
-      font-size: 0.9rem;
-    }
-
-    /* Sticky photo */
-    .sticky-photo {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.4s ease;
-      margin-left: 1rem;
-      list-style: none;
-    }
-
-    .sticky-photo img {
-      height: 45px;
-      width: 45px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    }
-
-    .sticky-photo.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 992px) {
-      .nav-links {
-        position: fixed;
-        top: 80px;
-        right: -100%;
-        background: var(--primary);
-        width: 70%;
-        height: calc(100vh - 80px);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        transition: all 0.5s ease;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .nav-links.active {
-        right: 0;
-      }
-
-      .nav-links li {
-        margin: 1.5rem 0;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .home-content h1 {
-        font-size: 2.8rem;
-      }
-
-      .home-content h2 {
-        font-size: 1.8rem;
-      }
-
-      .btn-container {
-        gap: 1rem;
-      }
-      
-      #home {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 6rem;
-      }
-      
-      .home-content {
-        text-align: center;
-      }
-      
-      .profile-image img {
-        width: 250px;
-        height: 250px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .section-title {
-        font-size: 2rem;
-      }
-
-      .home-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .home-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .btn {
-        padding: 0.7rem 1.5rem;
-        font-size: 1rem;
-      }
-
-      footer {
-        padding: 1rem 5%;
-      }
-      
-      .profile-image img {
-        width: 200px;
-        height: 200px;
-      }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00cccc;
     }
   </style>
 </head>
 
-<body>
+<body class="font-sans text-white pb-24">
   <!-- Navigation -->
-  <nav>
-    <a href="#home" class="logo"><i class="fas fa-code"></i> Bijesh <span>Kumar</span></a>
-    <ul class="nav-links">
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#internships">Internships</a></li>
-      <li><a href="#certificates">Certificates</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li class="sticky-photo">
-        <img src="photo.jpg" alt="Bijesh" />
+  <nav class="fixed top-0 w-full bg-secondary backdrop-blur-md flex justify-between items-center py-4 px-6 md:px-12 z-50 shadow-xl border-b border-accent/20">
+    <a href="#home" class="logo text-2xl font-bold text-accent flex items-center gap-2">
+      <i class="fas fa-code"></i> Bijesh <span class="text-white">Kumar</span>
+    </a>
+    <ul class="nav-links hidden md:flex list-none">
+      <li class="mx-4"><a href="#home" class="active text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Home</a></li>
+      <li class="mx-4"><a href="#about" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">About</a></li>
+      <li class="mx-4"><a href="#projects" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Projects</a></li>
+      <li class="mx-4"><a href="#internships" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Internships</a></li>
+      <li class="mx-4"><a href="#certificates" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Certificates</a></li>
+      <li class="mx-4"><a href="#achievements" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Achievements</a></li>
+      <li class="mx-4"><a href="#contact" class="text-white font-medium text-lg py-2 px-4 rounded transition-all duration-300 relative hover:text-accent">Contact</a></li>
+      <li class="sticky-photo ml-4 list-none opacity-0 transform scale-80 transition-all duration-400">
+        <img src="photo.jpg" alt="Bijesh" class="h-11 w-11 rounded-full border-2 border-accent shadow-lg shadow-accent/50" />
       </li>
     </ul>
-    <div class="mobile-menu-btn">
+    <div class="mobile-menu-btn text-accent text-2xl cursor-pointer md:hidden">
       <i class="fas fa-bars"></i>
     </div>
   </nav>
 
-  <!-- Home Section - Updated Layout -->
-  <section id="home">
-    <div class="home-content">
-      <h1>Hi, I'm <span>Bijesh Kumar</span></h1>
-      <h2 id="typewriter-title"></h2>
-      <p>
+  <!-- Mobile Menu (hidden by default) -->
+  <div class="mobile-nav fixed top-20 right-0 w-3/4 h-[calc(100vh-80px)] bg-primary flex-col items-center py-8 px-4 shadow-2xl z-40 transform translate-x-full transition-transform duration-500 md:hidden">
+    <a href="#home" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Home</a>
+    <a href="#about" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">About</a>
+    <a href="#projects" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Projects</a>
+    <a href="#internships" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Internships</a>
+    <a href="#certificates" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Certificates</a>
+    <a href="#achievements" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Achievements</a>
+    <a href="#contact" class="block py-4 text-white text-xl font-medium w-full text-center hover:text-accent">Contact</a>
+  </div>
+
+  <!-- Home Section -->
+  <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-center pt-24 md:pt-32 px-6 md:px-12 gap-8 md:gap-16">
+    <div class="home-content max-w-2xl text-center md:text-left">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-accent">Bijesh Kumar</span></h1>
+      <h2 id="typewriter-title" class="text-2xl md:text-3xl text-light-gray min-h-[3.5rem] mb-6"></h2>
+      <p class="text-lg md:text-xl mb-6">
         I specialize in developing secure and scalable solutions for modern
         applications. With expertise in cybersecurity, cloud infrastructure,
         and software development, I create robust systems that protect data
         while delivering exceptional performance.
       </p>
-      <p class="quote">"With great power comes great responsibility."</p>
-      <div class="btn-container">
-        <a href="https://drive.google.com/file/d/1ameIuaRKl6OxEFYLhUrdqHMoe_aGey35/view?usp=sharing" target="_blank" class="btn btn-primary">Download Resume</a>
-        <a href="https://github.com/kumarBijesh" target="_blank" class="btn">Visit GitHub</a>
+      <p class="quote italic text-gray-300 border-l-4 border-accent pl-4 my-6">
+        "With great power comes great responsibility."
+      </p>
+      <div class="btn-container flex flex-wrap justify-center md:justify-start gap-4 mt-8">
+        <a href="https://drive.google.com/file/d/1ameIuaRKl6OxEFYLhUrdqHMoe_aGey35/view?usp=sharing" target="_blank" class="btn bg-accent text-primary font-semibold py-3 px-8 rounded-full border-2 border-accent transition-all duration-300 hover:bg-transparent hover:text-accent shadow-lg hover:shadow-accent/30 hover:-translate-y-1">
+          Download Resume
+        </a>
+        <a href="https://github.com/kumarBijesh" target="_blank" class="btn bg-transparent text-accent font-semibold py-3 px-8 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary shadow-lg hover:shadow-accent/30 hover:-translate-y-1">
+          Visit GitHub
+        </a>
       </div>
     </div>
-    <div class="profile-image">
-      <img src="photo.jpg" alt="Bijesh Kumar" />
+    <div class="profile-image mt-10 md:mt-0 flex-shrink-0">
+      <img src="photo.jpg" alt="Bijesh Kumar" class="w-64 h-72 md:w-80 md:h-96 object-cover rounded-lg bg-black shadow-2xl shadow-accent/50 transition-all duration-400 hover:scale-105 hover:shadow-3xl hover:shadow-accent/70" />
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <h3>Cyber Security & Web Developer</h3>
-        <p>
+  <section id="about" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      About Me
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    <div class="about-content flex flex-col lg:flex-row justify-between items-start gap-12">
+      <div class="about-text flex-1 min-w-[300px]">
+        <h3 class="text-2xl text-accent mb-6">Cyber Security & Web Developer</h3>
+        <p class="text-lg mb-6">
           I'm a cybersecurity enthusiast and developer currently pursuing my
           Master of Computer Applications at Lovely Professional University,
           where I've maintained a 7.6 CGPA. My journey in technology began in
-         2023, driven by a keen interest in securing systems and
-          understanding how technology shapes the world
+          2023, driven by a keen interest in securing systems and
+          understanding how technology shapes the world.
         </p>
-        <p>
+        <p class="text-lg mb-8">
           Over time, I've built expertise across cybersecurity, web development. I've worked on a
           variety of projects — from building data layers and scalable web
           platforms to exploring the intersection of AI and security. I love
@@ -978,424 +175,504 @@
           out opportunities to learn, experiment, and turn complex problems
           into secure, efficient solutions.
         </p>
-    
 
-        <div class="skills-container">
-          <div class="skill-item">
-            <h4>Technical Skills</h4>
+        <div class="skills-container grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div class="skill-item bg-card-bg p-6 rounded-lg border-l-4 border-accent shadow-lg opacity-0 transform translate-y-6 transition-all duration-500">
+            <h4 class="text-xl text-accent mb-4">Technical Skills</h4>
             <ul>
-              <li class="skill-list-item">
-                <i class="fas fa-check"></i> Cyber Security & Ethical Hacking
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Cyber Security & Ethical Hacking
               </li>
-              <li class="skill-list-item">
-                <i class="fas fa-check"></i> Web Application Development
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Web Application Development
               </li>
-
-              <li class="skill-list-item"><i class="fas fa-check"></i> Python, Java</li>
-
-              <li class="skill-list-item"><i class="fas fa-check"></i>Software Testing </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Python, Java
+              </li>
+              <li class="skill-list-item flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Software Testing
+              </li>
             </ul>
           </div>
-          <div class="skill-item">
-            <h4>Professional Skills</h4>
+          
+          <div class="skill-item bg-card-bg p-6 rounded-lg border-l-4 border-accent shadow-lg opacity-0 transform translate-y-6 transition-all duration-500">
+            <h4 class="text-xl text-accent mb-4">Professional Skills</h4>
             <ul>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Problem Solving</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Team Leadership</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Communication</li>
-              
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Problem Solving
+              </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Team Leadership
+              </li>
+              <li class="skill-list-item flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Communication
+              </li>
             </ul>
           </div>
-
-          <div class="skill-item">
-            <h4>Tools</h4>
+          
+          <div class="skill-item bg-card-bg p-6 rounded-lg border-l-4 border-accent shadow-lg opacity-0 transform translate-y-6 transition-all duration-500">
+            <h4 class="text-xl text-accent mb-4">Tools</h4>
             <ul>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Nmap</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> wireshark</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Selenium</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> Jupyter NoteBook</li>
-              </ul>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Nmap
+              </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Wireshark
+              </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Selenium
+              </li>
+              <li class="skill-list-item flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Jupyter Notebook
+              </li>
+            </ul>
           </div>
-
-          <div class="skill-item">
-            <h4>Practice Platform</h4>
+          
+          <div class="skill-item bg-card-bg p-6 rounded-lg border-l-4 border-accent shadow-lg opacity-0 transform translate-y-6 transition-all duration-500">
+            <h4 class="text-xl text-accent mb-4">Practice Platform</h4>
             <ul>
-              <li class="skill-list-item"><i class="fas fa-check"></i> TryHcakMe</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> picoCTF</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i> LeetCode</li>
-              <li class="skill-list-item"><i class="fas fa-check"></i>Kaggle</li>
-              </ul>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> TryHackMe
+              </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> picoCTF
+              </li>
+              <li class="skill-list-item mb-3 flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> LeetCode
+              </li>
+              <li class="skill-list-item flex items-center">
+                <i class="fas fa-check text-accent mr-3 text-sm"></i> Kaggle
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="about-stats">
-        <div class="stat-box">
-          <i class="fas fa-briefcase"></i>
-          <h3>0-1</h3>
-          <p>Years Experience</p>
+      
+      <div class="about-stats flex-1 min-w-[300px] grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="stat-box bg-card-bg p-8 rounded-lg text-center transition-all duration-300 opacity-0 transform translate-y-6 hover:-translate-y-2 hover:bg-accent/10">
+          <i class="fas fa-briefcase text-4xl text-accent mb-4"></i>
+          <h3 class="text-4xl mb-2">0-1</h3>
+          <p class="text-light-gray">Years Experience</p>
         </div>
-        <div class="stat-box">
-          <i class="fas fa-project-diagram"></i>
-          <h3>10+</h3>
-          <p>Projects Completed</p>
+        
+        <div class="stat-box bg-card-bg p-8 rounded-lg text-center transition-all duration-300 opacity-0 transform translate-y-6 hover:-translate-y-2 hover:bg-accent/10">
+          <i class="fas fa-project-diagram text-4xl text-accent mb-4"></i>
+          <h3 class="text-4xl mb-2">10+</h3>
+          <p class="text-light-gray">Projects Completed</p>
         </div>
-
-        <div class="stat-box">
-          <i class="fas fa-award"></i>
-          <h3>15+</h3>
-          <p>Certificates</p>
+        
+        <div class="stat-box bg-card-bg p-8 rounded-lg text-center transition-all duration-300 opacity-0 transform translate-y-6 hover:-translate-y-2 hover:bg-accent/10">
+          <i class="fas fa-award text-4xl text-accent mb-4"></i>
+          <h3 class="text-4xl mb-2">15+</h3>
+          <p class="text-light-gray">Certificates</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects">
-    <h2 class="section-title">My Projects</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <div class="project-img">
-          <i class="fas fa-shield-alt"></i>
+  <section id="projects" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      My Projects
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    <div class="projects-container grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Project 1 -->
+      <div class="project-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="project-img w-full h-48 bg-gradient-to-r from-purple-900 to-blue-900 flex items-center justify-center">
+          <i class="fas fa-shield-alt text-5xl text-accent"></i>
         </div>
-        <div class="project-content">
-          <h3>Threat X-Ray Dual Layer Scanning and Malware Tool</h3>
-          <span class="project-date">Feb-May 2025</span>
-          <p>
+        <div class="project-content p-6">
+          <h3 class="text-xl text-accent mb-2">Threat X-Ray Dual Layer Scanning and Malware Tool</h3>
+          <span class="project-date text-light-gray text-sm block mb-4">Feb-May 2025</span>
+          <p class="mb-6">
             Threat X-Ray helps spot hidden threats and privacy risks early on,
             making it easier to check files, links, and images without going
             through tons of manual work. It cuts down the number of files you
             have to review and makes security checks faster and simpler.
           </p>
-          <div class="tech-stack">
-            <span class="tech-item">Security</span>
-            <span class="tech-item">Python</span>
-            <span class="tech-item">SQL</span>
-            <span class="tech-item">API</span>
+          <div class="tech-stack flex flex-wrap gap-2 mb-6">
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Security</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Python</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">SQL</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">API</span>
           </div>
-          <a href="https://github.com/kumarBijesh/ThreatXrayApp" target="_blank" class="btn">View Details</a>
+          <a href="https://github.com/kumarBijesh/ThreatXrayApp" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Details
+          </a>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <i class="fa-solid fa-laptop"></i>
+      
+      <!-- Project 2 -->
+      <div class="project-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="project-img w-full h-48 bg-gradient-to-r from-purple-900 to-blue-900 flex items-center justify-center">
+          <i class="fa-solid fa-laptop text-5xl text-accent"></i>
         </div>
-        <div class="project-content">
-          <h3>File-Revovery System App</h3>
-          <span class="project-date">Mar-Apr 2025</span>
-          <p>
+        <div class="project-content p-6">
+          <h3 class="text-xl text-accent mb-2">File-Revovery System App</h3>
+          <span class="project-date text-light-gray text-sm block mb-4">Mar-Apr 2025</span>
+          <p class="mb-6">
             This tool is a forensic utility designed to help recover lost or
             deleted files. It not only restores your data but also gives you a
             clear view of your file system — showing the total number of
             files, their sizes, and file types.
           </p>
-          <div class="tech-stack">
-            <span class="tech-item">Python </span>
-            <span class="tech-item">GUI</span>
+          <div class="tech-stack flex flex-wrap gap-2 mb-6">
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Python</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">GUI</span>
           </div>
-          <a href="https://github.com/kumarBijesh/Recovery-System-Tool" target="_blank" class="btn">View Details</a>
+          <a href="https://github.com/kumarBijesh/Recovery-System-Tool" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Details
+          </a>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <i class="fa-solid fa-keyboard"></i>
+      
+      <!-- Project 3 -->
+      <div class="project-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="project-img w-full h-48 bg-gradient-to-r from-purple-900 to-blue-900 flex items-center justify-center">
+          <i class="fa-solid fa-keyboard text-5xl text-accent"></i>
         </div>
-        <div class="project-content">
-          <h3>Key-Logger</h3>
-          <span class="project-date">Nov-Dec 2024</span>
-          <p>
+        <div class="project-content p-6">
+          <h3 class="text-xl text-accent mb-2">Key-Logger</h3>
+          <span class="project-date text-light-gray text-sm block mb-4">Nov-Dec 2024</span>
+          <p class="mb-6">
             This is a keylogger tool that records all keystrokes typed on a
             computer. It comes with a simple graphical user interface (GUI),
             making it easy to use. I'm currently working on an advanced
             version that can start automatically.
           </p>
-          <div class="tech-stack">
-            <span class="tech-item">Python</span>
-            <span class="tech-item">Flask</span>
-            <span class="tech-item">API</span>
+          <div class="tech-stack flex flex-wrap gap-2 mb-6">
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Python</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Flask</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">API</span>
           </div>
-          <a href="https://github.com/kumarBijesh/KEYLOGGER-GUI" target="_blank" class="btn">View Details</a>
+          <a href="https://github.com/kumarBijesh/KEYLOGGER-GUI" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Details
+          </a>
         </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-img">
-          <i class="fa-solid fa-newspaper"></i>
+      
+      <!-- Project 4 -->
+      <div class="project-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="project-img w-full h-48 bg-gradient-to-r from-purple-900 to-blue-900 flex items-center justify-center">
+          <i class="fa-solid fa-newspaper text-5xl text-accent"></i>
         </div>
-        <div class="project-content">
-          <h3>Fake News Detection</h3>
-          <span class="project-date">Mar-May 2024</span>
-          <p>
+        <div class="project-content p-6">
+          <h3 class="text-xl text-accent mb-2">Fake News Detection</h3>
+          <span class="project-date text-light-gray text-sm block mb-4">Mar-May 2024</span>
+          <p class="mb-6">
             This project is a Fake News Detection system that can predict
             whether a piece of news is true or fake. I built and trained a
             machine learning model that analyzes news content and tells us how
             likely it is to be real or misleading.
           </p>
-          <div class="tech-stack">
-            <span class="tech-item">Python</span>
-            <span class="tech-item">streamlit</span>
-            <span class="tech-item">Machine Learning</span>
+          <div class="tech-stack flex flex-wrap gap-2 mb-6">
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Python</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Streamlit</span>
+            <span class="tech-item bg-accent/10 text-accent py-1 px-3 rounded-full text-sm">Machine Learning</span>
           </div>
-          <a href="https://github.com/kumarBijesh/python---Projct" target="_blank" class="btn">View Details</a>
+          <a href="https://github.com/kumarBijesh/python---Projct" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Details
+          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Internships Section -->
-  <section id="internships">
-    <h2 class="section-title">My Internships</h2>
-    <div class="internships-container">
-      <div class="internship-card">
+  <section id="internships" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      My Internships
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    <div class="internships-container grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="internship-card bg-card-bg p-8 rounded-2xl shadow-lg flex flex-col opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
         <div class="internship-content">
-          <h3>Cybersecurity Intern</h3>
-          <span class="internship-company">Elevate Labs</span>
-          <span class="internship-date">23 June 2025 - 28 July 2025</span>
-          <p>
+          <h3 class="text-xl text-accent mb-2">Cybersecurity Intern</h3>
+          <span class="internship-company text-light-gray font-semibold text-lg block mb-2">Elevate Labs</span>
+          <span class="internship-date text-accent text-sm block mb-6">23 June 2025 - 28 July 2025</span>
+          <p class="mb-6">
             During my internship at Elevate Labs, I worked on various cybersecurity tasks including vulnerability assessment, penetration testing, and security analysis. I gained hands-on experience with tools like Nmap, Wireshark, and Metasploit.
           </p>
-          <a href="https://drive.google.com/file/d/15OZ1GUxBlEy0anY1aWxbF6FV-M2RE0JS/view?usp=sharing" target="_blank" class="btn">View Certificate</a>
+          <a href="https://drive.google.com/file/d/15OZ1GUxBlEy0anY1aWxbF6FV-M2RE0JS/view?usp=sharing" target="_blank" class="btn mt-auto inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
         </div>
-      </div>
-
-      </section>
-
- <!-- Certificates Section -->
-<section id="certificates">
-  <h2 class="section-title">My Certificates</h2>
-  <div class="certificates-container">
-    
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" />
-      </div>
-      <div class="certificate-content">
-        <h3>Google cybersecurity</h3>
-        <span class="certificate-issuer">Coursera</span>
-        <p>
-          Completed Google's Cybersecurity Certificates, where I learned how
-          to spot threats, reduce risks, and follow best practices to keep
-          data secure.
-        </p>
-        <a href="https://drive.google.com/file/d/1b0jW0VERAMHHT6TuwVFdsrkmwTRKVGiT/view?usp=drive_link"
-          target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <i class="fas fa-user-secret"></i>
-      </div>
-      <div class="certificate-content">
-        <h3>Cyber security 101</h3>
-        <span class="certificate-issuer">Try Hack Me</span>
-        <p>
-          Took TryHackMe's Cyber Security 101 course, which let me explore
-          real-world security scenarios. I practiced finding vulnerabilities
-          and learned about encryption.
-        </p>
-        <a href="https://drive.google.com/file/d/1VPs2-f_q439GhNBOdM3NPT7X0lqAWD7T/view?usp=drive_link"
-          target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <i class="fas fa-user-secret"></i>
-      </div>
-      <div class="certificate-content">
-        <h3>Pre Security</h3>
-        <span class="certificate-issuer">Try Hack Me</span>
-        <p>
-          I completed the Pre Security path on TryHackMe, which was a great
-          hands-on way to learn the basics of cybersecurity. It helped me
-          understand how networks work.
-        </p>
-        <a href="https://drive.google.com/file/d/1QRh61DPJOlBLD-nvAqtcSHkKYG0VNFxp/view?usp=drive_link"
-          target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" />
-      </div>
-      <div class="certificate-content">
-        <h3>React Basics</h3>
-        <span class="certificate-issuer">Coursera</span>
-        <p>
-          Completed the React Basics course on Coursera, where I learned how
-          to build interactive user interfaces using React. I gained hands-on
-          experience with components, state management, and hooks.
-        </p>
-        <a href="https://drive.google.com/file/d/12mktMIbaWbiYxYx1YZpvT5mwUR9MgtlB/view?usp=sharing"
-          target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" />
-      </div>
-      <div class="certificate-content">
-        <h3>Data Warehouse</h3>
-        <span class="certificate-issuer">Coursera</span>
-        <p>
-          Completed the Data Warehouse course on Coursera, where I learned
-          how to design and implement data warehouses. I gained skills in data
-          modeling, ETL processes, and data visualization.
-        </p>
-        <a href="https://drive.google.com/file/d/1cWvHI5KMCQdW8zDSc5yHVVRAOi8p1Ts0/view?usp=sharing"
-          target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-    <div class="certificate-card">
-      <div class="certificate-img">
-        <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" />
-      </div>
-      <div class="certificate-content">
-        <h3>IBM Full Stack Software Developer</h3>
-        <span class="certificate-issuer">Coursera</span>
-        <p>
-          Completed IBM's Full Stack Software Developer program, where I
-          learned how to build web applications from end to end. I worked
-          with front-end and back-end technologies.
-        </p>
-        <a href="#" target="_blank" class="btn">View Certificate</a>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Achievements Section -->
-  <section id="achievements">
-    <h2 class="section-title">Achievements</h2>
-
-    <div class="achievement-card">
-      <div class="achievement-content">
-        <h3>Publication in Cybersecurity Journal</h3>
-        <p>
-          Published a research paper on advanced penetration testing techniques in a reputed cybersecurity journal,
-          contributing to the academic community and sharing knowledge with peers.
-        </p>
-        <a href="https://ijsrem.com/download/threatxray-a-dual-layered-approach-for-advanced-steganographic-and-metadata-based-threat-detection/"
-          target="_blank" rel="noopener" class="btn btn-primary">
-          Check Out Achievement
-        </a>
-      </div>
-    </div>
-
-    <div class="achievement-card">
-      <div class="achievement-content">
-        <h3>Runner-up in Hackers Prey CTF 2024</h3>
-        <p>
-          Secured the runner-up position in a Capture The Flag (CTF) competition organized by Hackers Prey at our
-          college in 2024,
-          where we developed a security solution tailored for financial institutions.
-        </p>
-        <p><strong>Team Size:</strong> 3 members</p>
       </div>
     </div>
   </section>
 
+  <!-- Certificates Section -->
+  <section id="certificates" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      My Certificates
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    <div class="certificates-container grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Certificate 1 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" class="h-16 w-16" />
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">Google cybersecurity</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Coursera</span>
+          <p class="mb-6">
+            Completed Google's Cybersecurity Certificates, where I learned how
+            to spot threats, reduce risks, and follow best practices to keep
+            data secure.
+          </p>
+          <a href="https://drive.google.com/file/d/1b0jW0VERAMHHT6TuwVFdsrkmwTRKVGiT/view?usp=drive_link" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+      
+      <!-- Certificate 2 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <i class="fas fa-user-secret text-5xl text-accent"></i>
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">Cyber security 101</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Try Hack Me</span>
+          <p class="mb-6">
+            Took TryHackMe's Cyber Security 101 course, which let me explore
+            real-world security scenarios. I practiced finding vulnerabilities
+            and learned about encryption.
+          </p>
+          <a href="https://drive.google.com/file/d/1VPs2-f_q439GhNBOdM3NPT7X0lqAWD7T/view?usp=drive_link" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+      
+      <!-- Certificate 3 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <i class="fas fa-user-secret text-5xl text-accent"></i>
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">Pre Security</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Try Hack Me</span>
+          <p class="mb-6">
+            I completed the Pre Security path on TryHackMe, which was a great
+            hands-on way to learn the basics of cybersecurity. It helped me
+            understand how networks work.
+          </p>
+          <a href="https://drive.google.com/file/d/1QRh61DPJOlBLD-nvAqtcSHkKYG0VNFxp/view?usp=drive_link" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+      
+      <!-- Certificate 4 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" class="h-16 w-16" />
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">React Basics</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Coursera</span>
+          <p class="mb-6">
+            Completed the React Basics course on Coursera, where I learned how
+            to build interactive user interfaces using React. I gained hands-on
+            experience with components, state management, and hooks.
+          </p>
+          <a href="https://drive.google.com/file/d/12mktMIbaWbiYxYx1YZpvT5mwUR9MgtlB/view?usp=sharing" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+      
+      <!-- Certificate 5 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" class="h-16 w-16" />
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">Data Warehouse</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Coursera</span>
+          <p class="mb-6">
+            Completed the Data Warehouse course on Coursera, where I learned
+            how to design and implement data warehouses. I gained skills in data
+            modeling, ETL processes, and data visualization.
+          </p>
+          <a href="https://drive.google.com/file/d/1cWvHI5KMCQdW8zDSc5yHVVRAOi8p1Ts0/view?usp=sharing" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+      
+      <!-- Certificate 6 -->
+      <div class="certificate-card bg-card-bg rounded-2xl overflow-hidden shadow-lg opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="certificate-img w-full h-48 bg-gradient-to-r from-green-900 to-blue-900 flex items-center justify-center">
+          <img src="https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon-v2-57x57.png" alt="Coursera" class="h-16 w-16" />
+        </div>
+        <div class="certificate-content p-6">
+          <h3 class="text-xl text-accent mb-2">IBM Full Stack Software Developer</h3>
+          <span class="certificate-issuer text-light-gray block mb-4">Coursera</span>
+          <p class="mb-6">
+            Completed IBM's Full Stack Software Developer program, where I
+            learned how to build web applications from end to end. I worked
+            with front-end and back-end technologies.
+          </p>
+          <a href="#" target="_blank" class="btn inline-block bg-transparent text-accent font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-accent hover:text-primary">
+            View Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      Achievements
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    
+    <div class="achievements-container grid grid-cols-1 gap-8 mb-8">
+      <!-- Achievement 1 -->
+      <div class="achievement-card bg-card-bg p-8 rounded-2xl shadow-lg flex items-stretch opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="achievement-content">
+          <h3 class="text-xl text-accent mb-4">Publication in Cybersecurity Journal</h3>
+          <p class="mb-6">
+            Published a research paper on advanced penetration testing techniques in a reputed cybersecurity journal,
+            contributing to the academic community and sharing knowledge with peers.
+          </p>
+          <a href="https://ijsrem.com/download/threatxray-a-dual-layered-approach-for-advanced-steganographic-and-metadata-based-threat-detection/"
+            target="_blank" rel="noopener" class="btn inline-block bg-accent text-primary font-semibold py-2 px-6 rounded-full border-2 border-accent transition-all duration-300 hover:bg-transparent hover:text-accent">
+            Check Out Achievement
+          </a>
+        </div>
+      </div>
+      
+      <!-- Achievement 2 -->
+      <div class="achievement-card bg-card-bg p-8 rounded-2xl shadow-lg flex items-stretch opacity-0 transform translate-y-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-accent/20">
+        <div class="achievement-content">
+          <h3 class="text-xl text-accent mb-4">Runner-up in Hackers Prey CTF 2024</h3>
+          <p class="mb-6">
+            Secured the runner-up position in a Capture The Flag (CTF) competition organized by Hackers Prey at our
+            college in 2024,
+            where we developed a security solution tailored for financial institutions.
+          </p>
+          <p class="font-semibold">Team Size: 3 members</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-    <h2 class="section-title">Contact & Education</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <h3>Get In Touch</h3>
-        <p>
+  <section id="contact" class="min-h-screen py-16 px-6 md:px-12 bg-black/10">
+    <h2 class="section-title text-3xl md:text-4xl text-accent text-center mb-12 relative pb-4">
+      Contact & Education
+      <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full shadow-md shadow-accent/50"></span>
+    </h2>
+    <div class="contact-container flex flex-col lg:flex-row flex-wrap gap-12">
+      <div class="contact-info flex-1 min-w-[300px]">
+        <h3 class="text-2xl text-accent mb-6">Get In Touch</h3>
+        <p class="text-lg mb-8 max-w-2xl">
           I'm currently available for freelance work and full-time positions.
           Feel free to reach out via email or phone for collaboration, project
           inquiries, or just to connect!
         </p>
 
-        <div class="contact-details">
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
+        <div class="contact-details mt-8">
+          <div class="contact-item flex items-center mb-6">
+            <div class="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full mr-4">
+              <i class="fas fa-envelope text-xl text-accent"></i>
+            </div>
             <div class="contact-text">
-              <h4>Email</h4>
-              <a href="mailto:b.k.lpuinsta@gmail.com">b.k.lpuinsta@gmail.com</a>
+              <h4 class="text-lg font-semibold">Email</h4>
+              <a href="mailto:b.k.lpuinsta@gmail.com" class="text-light-gray hover:text-accent transition-colors duration-300">b.k.lpuinsta@gmail.com</a>
             </div>
           </div>
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
+          
+          <div class="contact-item flex items-center mb-6">
+            <div class="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full mr-4">
+              <i class="fas fa-phone text-xl text-accent"></i>
+            </div>
             <div class="contact-text">
-              <h4>Phone</h4>
-              <p>+91 8789774242</p>
+              <h4 class="text-lg font-semibold">Phone</h4>
+              <p class="text-light-gray">+91 8789774242</p>
             </div>
           </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
+          
+          <div class="contact-item flex items-center mb-6">
+            <div class="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-full mr-4">
+              <i class="fas fa-map-marker-alt text-xl text-accent"></i>
+            </div>
             <div class="contact-text">
-              <h4>Location</h4>
-              <p>Patna, Bihar</p>
+              <h4 class="text-lg font-semibold">Location</h4>
+              <p class="text-light-gray">Patna, Bihar</p>
             </div>
           </div>
         </div>
 
         <!-- Education Details -->
-        <div class="education-details">
-          <h4>Education Details</h4>
-          <div class="education-item">
-            <p><strong>Name:</strong> Bijesh Kumar</p>
-            <p><strong>Age:</strong> 24 Years</p>
+        <div class="education-details bg-card-bg p-6 rounded-lg border-l-4 border-accent mt-8">
+          <h4 class="text-xl text-accent mb-4">Education Details</h4>
+          <div class="education-item mb-4 pb-4 border-b border-white/10">
+            <p class="font-semibold">Name: Bijesh Kumar</p>
+            <p class="font-semibold">Age: 24 Years</p>
           </div>
           <div class="education-item">
-            <p><strong>College:</strong> Lovely Professional University</p>
-            <p>
-              <strong>Degree:</strong> Master of Computer Applications (MCA)
-            </p>
-            <p><strong>CGPA:</strong> 7.6</p>
-            <p><strong>Graduation:</strong> 2023 - 2025</p>
-            <p>
-              <strong>College Address: </strong>Lovely Professional
-              University, Jalandhar - Delhi G.T. Road, Phagwara, Punjab
-              (India) - 144411
-            </p>
+            <p class="font-semibold">College: Lovely Professional University</p>
+            <p class="font-semibold">Degree: Master of Computer Applications (MCA)</p>
+            <p class="font-semibold">CGPA: 7.6</p>
+            <p class="font-semibold">Graduation: 2023 - 2025</p>
+            <p class="font-semibold mt-2">College Address: Lovely Professional University, Jalandhar - Delhi G.T. Road, Phagwara, Punjab (India) - 144411</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Fixed Footer -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/bijesh-kumar/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://github.com/kumarBijesh" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:b.k.lpuinsta@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+918789774242"><i class="fas fa-phone"></i></a>
+  <!-- Footer -->
+  <footer class="bg-black/20 py-6 px-6 md:px-12 text-center bottom-0 w-full z-40 shadow-xl border-t border-accent/20">
+    <div class="social-links flex justify-center gap-6 mb-4">
+      <a href="https://www.linkedin.com/in/bijesh-kumar/" target="_blank" class="flex items-center justify-center w-10 h-10 bg-white/10 rounded-full text-white text-lg transition-all duration-300 hover:bg-accent hover:text-primary hover:-translate-y-1">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/kumarBijesh" target="_blank" class="flex items-center justify-center w-10 h-10 bg-white/10 rounded-full text-white text-lg transition-all duration-300 hover:bg-accent hover:text-primary hover:-translate-y-1">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="mailto:b.k.lpuinsta@gmail.com" class="flex items-center justify-center w-10 h-10 bg-white/10 rounded-full text-white text-lg transition-all duration-300 hover:bg-accent hover:text-primary hover:-translate-y-1">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="tel:+918789774242" class="flex items-center justify-center w-10 h-10 bg-white/10 rounded-full text-white text-lg transition-all duration-300 hover:bg-accent hover:text-primary hover:-translate-y-1">
+        <i class="fas fa-phone"></i>
+      </a>
     </div>
-    <p class="copyright">©Bijesh Kumar. All Rights Reserved.</p>
+    <p class="copyright text-light-gray text-sm">©Bijesh Kumar. All Rights Reserved.</p>
   </footer>
 
+  <!-- JavaScript -->
   <script>
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-    const navLinks = document.querySelector(".nav-links");
+    const mobileNav = document.querySelector(".mobile-nav");
+    const body = document.body;
 
     mobileMenuBtn.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      mobileMenuBtn.innerHTML = navLinks.classList.contains("active") 
-        ? '<i class="fas fa-times"></i>' 
-        : '<i class="fas fa-bars"></i>';
+      mobileNav.classList.toggle("translate-x-full");
+      mobileMenuBtn.innerHTML = mobileNav.classList.contains("translate-x-full") 
+        ? '<i class="fas fa-bars"></i>' 
+        : '<i class="fas fa-times"></i>';
     });
 
     // Close mobile menu when clicking on a link
-    document.querySelectorAll(".nav-links a").forEach((link) => {
+    document.querySelectorAll(".mobile-nav a").forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+        mobileNav.classList.add("translate-x-full");
         mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
       });
     });
 
     // Active navigation on scroll
     const sections = document.querySelectorAll("section");
-    const navLinksAll = document.querySelectorAll(".nav-links a");
+    const navLinksAll = document.querySelectorAll(".nav-links a, .mobile-nav a");
 
     window.addEventListener("scroll", () => {
       let current = "";
@@ -1410,21 +687,20 @@
       });
 
       navLinksAll.forEach((link) => {
-        link.classList.remove("active");
+        link.classList.remove("active", "text-accent");
         if (link.getAttribute("href").substring(1) === current) {
-          link.classList.add("active");
+          link.classList.add("active", "text-accent");
         }
       });
-    });
-
-    // Sticky photo on scroll
-    const stickyPhoto = document.querySelector(".sticky-photo");
-
-    window.addEventListener("scroll", () => {
+      
+      // Sticky photo on scroll
+      const stickyPhoto = document.querySelector(".sticky-photo");
       if (window.scrollY > 250) {
-        stickyPhoto.classList.add("visible");
+        stickyPhoto.classList.add("opacity-100", "scale-100");
+        stickyPhoto.classList.remove("opacity-0", "scale-80");
       } else {
-        stickyPhoto.classList.remove("visible");
+        stickyPhoto.classList.remove("opacity-100", "scale-100");
+        stickyPhoto.classList.add("opacity-0", "scale-80");
       }
     });
 
@@ -1481,7 +757,8 @@
         const elementVisible = 150;
         
         if (elementTop < window.innerHeight - elementVisible) {
-          el.classList.add('visible');
+          el.classList.add('opacity-100', 'translate-y-0');
+          el.classList.remove('opacity-0', 'translate-y-6');
         }
       });
 
@@ -1504,7 +781,8 @@
         const elementVisible = 150;
         
         if (elementTop < window.innerHeight - elementVisible) {
-          el.classList.add('visible');
+          el.classList.add('opacity-100', 'translate-y-0');
+          el.classList.remove('opacity-0', 'translate-y-6');
         }
       });
     };
